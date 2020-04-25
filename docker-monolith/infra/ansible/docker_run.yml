@@ -1,0 +1,10 @@
+---
+- hosts: dk
+  become: true
+  tasks:
+
+  - name: Run container
+    docker_container:
+      name: reddit
+      image: hataldir/otus-reddit:1.0
+      ports: 9292:9292
