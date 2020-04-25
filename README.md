@@ -1,6 +1,6 @@
 # hataldir_microservices
 hataldir microservices repository
-
+[![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 Домашнее задание 12
 
