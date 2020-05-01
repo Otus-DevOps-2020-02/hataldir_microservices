@@ -2,6 +2,13 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+Домашнее задание 14
+
+Префикс имен контейнеров docker-compose меняется с помощью переменной COMPOSE_PROJECT_NAME.
+
+
+
+
 Домашнее задание 13
 
 Скачана версия reddit, состоящая из микросервисов comment, ui, post-py. Для каждого из них написаны докерфайлы и собраны образы.
