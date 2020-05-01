@@ -6,6 +6,17 @@ hataldir microservices repository
 
 Префикс имен контейнеров docker-compose меняется с помощью переменной COMPOSE_PROJECT_NAME.
 
+Проверена работа сетевых драйверов none, host, bridge. 
+Созданы сети front_net, back_net. Контейнеры post и comment добавлены к обоим сетям с помощью docker network connect.
+
+Написан файл docker-compose.yml для запуска всего проекта с помощью docker-compose.
+В него добавлено использование двух сетей и использование файла .env для переменных. Изменен префикс имен контейнеров.
+
+Дополнительное задание:
+
+Создан файл docker-compose.override.yml, изменяющий сервисы:
+- каталоги comment, post-py и ui пробрасываются в контейнер как volumes (скопированы на docker-host) 
+- comment и ui запускаются как puma --debug -w 2
 
 
 
