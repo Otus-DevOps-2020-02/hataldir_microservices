@@ -15,12 +15,13 @@ before_script:
  - bundle install
 
 build_job:
-  image: docker
+#  image: docker
   stage: build
   services:
     - docker:dind
   script:
     - echo 'Building'
+    - cd reddit
     - docker build -t root/reddit:$CI_COMMIT_VERSION reddit
     - docker login -u $DH_LOGIN -p $DH_PASSWORD
     - docker push root/reddit:$CI_COMMIT_VERSION
