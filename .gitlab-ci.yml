@@ -18,7 +18,7 @@ build_job:
   stage: build
   services:
     - docker:dind
- script:
+  script:
     - echo 'Building'
     - docker build -t root/reddit:$CI_COMMIT_VERSION .
     - docker login -u $DH_LOGIN -p $DH_PASSWORD
