@@ -15,11 +15,15 @@ before_script:
  - bundle install
 
 build_job:
+  image: docker
   stage: build
   services:
-    - mongo:latest
+    - docker:dind
   script:
     - echo 'Building'
+    - docker build -t root/reddit:$CI_COMMIT_VERSION reddit
+    - docker login -u $DH_LOGIN -p $DH_PASSWORD
+    - docker push root/reddit:$CI_COMMIT_VERSION
 
 test_unit_job:
   stage: test
