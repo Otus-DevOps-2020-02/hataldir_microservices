@@ -2,6 +2,30 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+Домашнее задание 15
+
+
+Создана виртуалка в GCP, на нее установлены gitlab и gitlab-runner в виде контейнеров докера.
+Создан проект, в котором создан пайплайн, состоящий из стадий build, test, deploy.
+В пайплайн добавлена установка приложения reddit, для него создан тест simpletest.rb.
+Создано окружение dev
+Добавлены стадии и окружения staging, production, jobs для них запускаются в ручном режиме и только при наличии тега в коммите.
+Настроены динамические окружения для всех веток проекта кроме master.
+
+
+Дополнительное задание 1
+
+В шаг build добавлено создание контейнера с reddit
+
+Дополнительное задание 2
+
+Для установки Runner использована роль Ansible riemers.gitlab-runner.
+
+Добавлена интеграция со Slack.
+Канал #denis_lunev, https://devops-team-otus.slack.com/archives/CUWMMTQ8H
+
+
+
 Домашнее задание 14
 
 Префикс имен контейнеров docker-compose меняется с помощью переменной COMPOSE_PROJECT_NAME.

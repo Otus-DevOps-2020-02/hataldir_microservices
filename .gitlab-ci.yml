@@ -16,6 +16,8 @@ before_script:
 
 build_job:
   stage: build
+  services:
+    - mongo:latest
   script:
     - echo 'Building'
 
