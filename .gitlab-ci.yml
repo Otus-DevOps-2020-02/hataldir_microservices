@@ -67,7 +67,6 @@ branch review:
 
 
 staging:
-  image: docker:19.03.8-dind
   stage: stage
   when: manual
   only:
@@ -76,8 +75,6 @@ staging:
     - docker:19.03.8-dind
   script:
     - echo 'Deploy'
-    - docker --version
-    - docker run $REGISTRY_USER/reddit
   environment:
     name: stage
     url: https://beta.example.com
