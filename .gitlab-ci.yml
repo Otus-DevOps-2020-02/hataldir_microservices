@@ -26,7 +26,6 @@ build_job:
     - docker --version
   script:
     - echo 'Building'
-    - docker build -t root/reddit:$CI_COMMIT_VERSION .
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
     - docker build -t $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA .
     - docker push $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA
