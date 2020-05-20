@@ -11,6 +11,7 @@ variables:
  DATABASE_URL: 'mongodb://mongo/user_posts'
  DOCKER_HOST: tcp://docker:2375
  DOCKER_TLS_CERTDIR: ""
+ DOCKER_DRIVER: overlay2
 
 before_script:
  - cd reddit
@@ -26,7 +27,7 @@ build_job:
     - docker --version
   script:
     - echo 'Building'
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+    - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
     - docker build -t $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA .
     - docker push $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA
 
