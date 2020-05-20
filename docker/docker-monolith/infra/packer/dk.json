@@ -1,0 +1,39 @@
+{
+    "variables": {
+	"project_id": "docker-275212",
+	"source_image_family": "ubuntu-1604-lts",
+        "machine_type": "f1-micro"
+    },
+
+
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `project_id`}}",
+            "image_name": "reddit-dk-{{timestamp}}",
+            "image_family": "reddit-dk",
+            "source_image_family": "{{user `source_image_family`}}",
+            "zone": "europe-west1-b",
+            "ssh_username": "root",
+            "machine_type": "{{user `machine_type`}}",
+	    "disk_size": "10",
+	    "disk_type": "pd-standard",
+	    "tags": "puma-server",
+	    "network": "default",
+	    "image_description": "reddit dk"
+
+        }
+    ],
+
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "install_docker.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+
+
+
+}

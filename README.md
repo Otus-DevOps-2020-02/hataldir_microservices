@@ -2,6 +2,32 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+Домашнее задание 16
+
+
+С помощью docker-host создана виртуалка в GCP, на нее поставлен prometheus и удален. 
+Пересобраны образы микросервисов comment, ui, post с помощью docker_build.sh. Удалены параметры build для соответствующих сервисов из docker-compose.yml.
+Для prometheus написан конфиг prometheus.yml и мини-докерфайл.
+Prometheus добавлен как новый сервис в docker-compose с доступом к обоим сетям.
+Промониторены некоторыые метрики, для теста отключен сервис post.
+В prometheus.yml и docker-compose.yml добавлен еще один сервис для мониторинга за машиной docker-host - node_exporter.
+
+Дополнительное задание 1.
+
+Добавлен еще один сервис для мониторинга mongodb - percona/mongodb_exporter.
+
+Дополнительное задание 2.
+
+Добавлен еще один сервис для мониторинга за доступностью микросервисов - blackbox.
+
+Дополнительное задание 3.
+
+Написан Makefile, с помощью которого можно ребилдить все сервисы, пушить их в репозиторий и запускать проект.
+
+https://hub.docker.com/u/hataldir
+
+
+
 Домашнее задание 15
 
 

@@ -1,0 +1,8 @@
+plugin: 'gcp_compute'
+regions: 'europe-west1'
+projects: 'docker-275212'
+service_account_file: '~/docker-cred.json'
+auth_kind: 'serviceaccount'
+groups:
+  dk: "'dk' in name"
+filters: []
