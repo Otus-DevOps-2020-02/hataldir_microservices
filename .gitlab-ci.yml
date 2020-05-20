@@ -77,6 +77,7 @@ staging:
   script:
     - echo 'Deploy'
     - docker --version
+    - docker run $REGISTRY_USER/reddit
   environment:
     name: stage
     url: https://beta.example.com
