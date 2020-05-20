@@ -17,6 +17,7 @@ before_script:
  - bundle install
 
 build_job:
+  image: docker:19.03.8-dind
   stage: build
   services:
     - docker:19.03.8-dind
@@ -66,6 +67,7 @@ branch review:
 
 
 staging:
+  image: docker:19.03.8-dind
   stage: stage
   when: manual
   only:
