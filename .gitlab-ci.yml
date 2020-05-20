@@ -21,8 +21,8 @@ build_job:
   services:
     - docker:19.03.8-dind
   before_script:
-    cd reddit
-    docker --version
+    - cd reddit
+    - docker --version
   script:
     - echo 'Building'
     - docker build -t root/reddit:$CI_COMMIT_VERSION .
