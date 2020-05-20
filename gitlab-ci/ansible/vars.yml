@@ -1,0 +1,20 @@
+gitlab_runner_coordinator_url: "http://35.187.123.92/"
+gitlab_runner_registration_token: 'eauPnxLRavo4GHotNNgU'
+gitlab_runner_runners:
+  - name: 'Docker GitLab Runner'
+    executor: docker
+    docker_image: 'alpine:latest'
+    tags:
+      - linux
+      - docker
+      - ubuntu
+      - xenial
+    docker_volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/cache"
+#    extra_configs:
+#      runners.docker:
+#        memory: 512m
+#        allowed_images: ["ruby:*", "python:*", "php:*"]
+#      runners.docker.sysctls:
+#        net.ipv4.ip_forward: "1"

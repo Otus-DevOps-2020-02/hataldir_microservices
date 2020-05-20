@@ -17,3 +17,4 @@ vault.key
 .pytest_cache
 Pipfile.*
 ansible/venv
+terraform/
