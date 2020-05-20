@@ -27,7 +27,8 @@ build_job:
     - docker --version
   script:
     - echo 'Building'
-    - docker logout
+    - echo $REGISTRY_PASSWORD
+    - echo $REGISTRY_USER
     - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
     - docker build -t $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA .
     - docker push $REGISTRY_USER/reddit:$CI_COMMIT_SHORT_SHA
