@@ -2,6 +2,25 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+
+Домашнее задание 17
+
+Из конфига docker-compose выделен отдбелный конфиг для сервисов мониторинга.
+Установлен cAdvisor, добавлен в Prometheus.
+Установлена Grafana, импортирован дашборд Docker and system monitoring.
+Создан новый дашборд UI_Service_monitoring, включающий графики по метрикам ui_request_count, ui_request_count с фильтром по http responses 4*, 5* и 95 процентиль по
+ui_request_response_time_bucket.
+Создан дашборд Business_Logic_Monitoring, включающий графики по post_count и comment_count.
+Установлен Alertmanager, добавлен в Prometheus, настроена интеграция со Slack. Создан алерт, срабатывающий при недоступности любого из endpoints.
+
+Дополнительное задание 1:
+
+Запуск docker-compose для сервисов мониторинга, а также билд и пуш alertmanager добавлены в Makefile.
+
+
+
+
+
 Домашнее задание 16
 
 
