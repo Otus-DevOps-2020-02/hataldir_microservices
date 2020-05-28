@@ -9,3 +9,13 @@ groups:
       annotations:
         description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute'
         summary: 'Instance {{ $labels.instance }} down'
+
+    - alert: 95proc
+      expr: ui_request_response_time_bucket{quantile="0.95"} >1
+      for: 1m
+      labels:
+        severity: page
+      annotations:
+        description: '{{ $labels.instance }} has high latency'
+        summary: 'High latency on {{ $labels.instance }}'
+

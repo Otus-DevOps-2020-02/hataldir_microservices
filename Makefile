@@ -22,8 +22,20 @@ build_alertmanager:
 	export USER_NAME=${USER_NAME} ; \
         cd monitoring/alertmanager ; \
         bash build.sh
+build_telegraf:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/telegraf ; \
+        bash build.sh
+build_grafana:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/grafana ; \
+        bash build.sh
+build_stackdriver:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/stackdriver ; \
+        bash build.sh
 
-build: build_comment build_post build_ui build_prometheus build_alertmanager
+build: build_comment build_post build_ui build_prometheus build_alertmanager build_telegraf build_grafana build_stackdriver 
 
 
 push_comment:
@@ -36,8 +48,14 @@ push_prometheus:
 	docker push ${USER_NAME}/prometheus
 push_alertmanager:
 	docker push ${USER_NAME}/alertmanager
+push_telegraf:
+	docker push ${USER_NAME}/telegraf
+push_grafana:
+	docker push ${USER_NAME}/grafana
+push_stackdriver:
+	docker push ${USER_NAME}/stackdriver
 
-push: push_comment push_post push_ui push_prometheus push_alertmanager
+push: push_comment push_post push_ui push_prometheus push_alertmanager push_telegraf push_grafana push_stackdriver 
 
 run:
 	cd src ; \

@@ -19,3 +19,4 @@ Pipfile.*
 ansible/venv
 terraform/
 .env
+docker-cred.json

@@ -59,18 +59,20 @@ services:
       - back_net
 
   grafana:
-    image: grafana/grafana:5.0.0
+    image: ${USER_NAME}/grafana
     volumes:
       - grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=secret
+    user: "104"
     depends_on:
       - prometheus
     ports:
       - 3000:3000
     networks:
       - back_net
+      - front_net
 
   alertmanager:
     image: ${USER_NAME}/alertmanager
@@ -81,7 +83,45 @@ services:
     networks:
       - back_net
 
+  telegraf:
+    image: ${USER_NAME}/telegraf
+    environment:
+      - HOST_PROC=/host/proc
+    ports:
+      - 9273:9273
+    volumes:
+      - '/proc:/host/proc:ro'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - back_net
 
+  stackdriver:
+    image: ${USER_NAME}/stackdriver
+    environment:
+      - STACKDRIVER_EXPORTER_GOOGLE_PROJECT_ID=docker-275212
+#      - STACKDRIVER_EXPORTER_MONITORING_METRICS_TYPE_PREFIXES="compute.googleapis.com/instance/cpu,compute.googleapis.com/instance/disk"
+      - STACKDRIVER_EXPORTER_MONITORING_METRICS_TYPE_PREFIXES=compute.googleapis.com/instance
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/docker-cred.json
+    ports:
+      - 9255:9255
+    networks:
+      - back_net    
+
+  trickster:
+    image: tricksterio/trickster
+#    image: ${USER_NAME}/trickster
+    environment:
+      - TRK_ORIGIN=http://prometheus:9090
+      - TRK_ORIGIN_TYPE=prometheus 
+      - TRK_LOG_LEVEL=INFO 
+      - TRK_PROXY_PORT=8480
+      - TRK_METRICS_PORT=8481
+    ports:
+      - 8480:8480
+    networks:
+      - back_net
+
+ 
 volumes:
   prometheus_data:
   grafana_data:

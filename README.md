@@ -16,8 +16,19 @@ ui_request_response_time_bucket.
 Дополнительное задание 1:
 
 Запуск docker-compose для сервисов мониторинга, а также билд и пуш alertmanager добавлены в Makefile.
+В докере настроено отображение метрик в формате Prometheus (metrics-addr) на порту 9323. Endpoint добавлен в Prometheus, в Grafana добавлен дашборд Docker Engine Metrics.
+По сравнению с cAdvisor метрик собирается в 6 раз меньше.
+Установлен telegraf, в нем включены inputs plugin docker и outputs plugin prometheus. Endpoint добавлен в Promethues, в Grafana добавлен дашборд Telegraf Metrics.
+Создан еще один алерт. Добавлена отправка уведомлений на емейл.
 
+Дополнительное задание 2:
 
+Создан образ Grafana, в Dockerfile внесены настройка datasources и копирование дашбордов. Версия для этого нужна 5.1.
+Установлен stackdriver_exporter, настроен на проект Docker в GCP,  добавлен в Prometheus. Собирает всего примерно 30 метрик с машины docker-host - данные по CPU, disk, network, boot integrity.
+
+Дополнительное задание 3:
+
+Установлен Trickster, Grafana настроена на использование его в качестве datasourse.
 
 
 
