@@ -58,11 +58,11 @@ push_stackdriver:
 push: push_comment push_post push_ui push_prometheus push_alertmanager push_telegraf push_grafana push_stackdriver 
 
 run:
-	cd src ; \
+	cd docker ; \
         docker-compose up -d
 
 monitor:
-	cd src ; \
+	cd docker ; \
         docker-compose -f docker-compose-monitoring.yml up -d
 
 
