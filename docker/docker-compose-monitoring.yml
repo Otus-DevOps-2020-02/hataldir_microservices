@@ -59,7 +59,7 @@ services:
       - back_net
 
   grafana:
-    image: ${USER_NAME}/grafana
+    image: ${USERNAME}/grafana
     volumes:
       - grafana_data:/var/lib/grafana
     environment:
@@ -75,7 +75,7 @@ services:
       - front_net
 
   alertmanager:
-    image: ${USER_NAME}/alertmanager
+    image: ${USERNAME}/alertmanager
     command:
       - '--config.file=/etc/alertmanager/config.yml'
     ports:
@@ -84,7 +84,7 @@ services:
       - back_net
 
   telegraf:
-    image: ${USER_NAME}/telegraf
+    image: ${USERNAME}/telegraf
     environment:
       - HOST_PROC=/host/proc
     ports:
@@ -96,7 +96,7 @@ services:
       - back_net
 
   stackdriver:
-    image: ${USER_NAME}/stackdriver
+    image: ${USERNAME}/stackdriver
     environment:
       - STACKDRIVER_EXPORTER_GOOGLE_PROJECT_ID=docker-275212
 #      - STACKDRIVER_EXPORTER_MONITORING_METRICS_TYPE_PREFIXES="compute.googleapis.com/instance/cpu,compute.googleapis.com/instance/disk"
