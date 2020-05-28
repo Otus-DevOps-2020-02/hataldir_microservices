@@ -2,6 +2,36 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+
+Домашнее задание 17
+
+Из конфига docker-compose выделен отдбелный конфиг для сервисов мониторинга.
+Установлен cAdvisor, добавлен в Prometheus.
+Установлена Grafana, импортирован дашборд Docker and system monitoring.
+Создан новый дашборд UI_Service_monitoring, включающий графики по метрикам ui_request_count, ui_request_count с фильтром по http responses 4*, 5* и 95 процентиль по
+ui_request_response_time_bucket.
+Создан дашборд Business_Logic_Monitoring, включающий графики по post_count и comment_count.
+Установлен Alertmanager, добавлен в Prometheus, настроена интеграция со Slack. Создан алерт, срабатывающий при недоступности любого из endpoints.
+
+Дополнительное задание 1:
+
+Запуск docker-compose для сервисов мониторинга, а также билд и пуш alertmanager добавлены в Makefile.
+В докере настроено отображение метрик в формате Prometheus (metrics-addr) на порту 9323. Endpoint добавлен в Prometheus, в Grafana добавлен дашборд Docker Engine Metrics.
+По сравнению с cAdvisor метрик собирается в 6 раз меньше.
+Установлен telegraf, в нем включены inputs plugin docker и outputs plugin prometheus. Endpoint добавлен в Promethues, в Grafana добавлен дашборд Telegraf Metrics.
+Создан еще один алерт. Добавлена отправка уведомлений на емейл.
+
+Дополнительное задание 2:
+
+Создан образ Grafana, в Dockerfile внесены настройка datasources и копирование дашбордов. Версия для этого нужна 5.1.
+Установлен stackdriver_exporter, настроен на проект Docker в GCP,  добавлен в Prometheus. Собирает всего примерно 30 метрик с машины docker-host - данные по CPU, disk, network, boot integrity.
+
+Дополнительное задание 3:
+
+Установлен Trickster, Grafana настроена на использование его в качестве datasourse.
+
+
+
 Домашнее задание 16
 
 

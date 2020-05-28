@@ -18,8 +18,24 @@ build_prometheus:
 	export USER_NAME=${USER_NAME} ; \
         cd monitoring/prometheus ; \
         bash build.sh
+build_alertmanager:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/alertmanager ; \
+        bash build.sh
+build_telegraf:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/telegraf ; \
+        bash build.sh
+build_grafana:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/grafana ; \
+        bash build.sh
+build_stackdriver:
+	export USER_NAME=${USER_NAME} ; \
+        cd monitoring/stackdriver ; \
+        bash build.sh
 
-build: build_comment build_post build_ui build_prometheus
+build: build_comment build_post build_ui build_prometheus build_alertmanager build_telegraf build_grafana build_stackdriver 
 
 
 push_comment:
@@ -30,12 +46,25 @@ push_ui:
 	docker push ${USER_NAME}/ui
 push_prometheus:
 	docker push ${USER_NAME}/prometheus
+push_alertmanager:
+	docker push ${USER_NAME}/alertmanager
+push_telegraf:
+	docker push ${USER_NAME}/telegraf
+push_grafana:
+	docker push ${USER_NAME}/grafana
+push_stackdriver:
+	docker push ${USER_NAME}/stackdriver
 
-push: push_comment push_post push_ui push_prometheus
+push: push_comment push_post push_ui push_prometheus push_alertmanager push_telegraf push_grafana push_stackdriver 
 
 run:
-	cd src ; \
+	cd docker ; \
         docker-compose up -d
 
-all: build push run
+monitor:
+	cd docker ; \
+        docker-compose -f docker-compose-monitoring.yml up -d
+
+
+all: build push run monitor
 
