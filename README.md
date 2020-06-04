@@ -3,6 +3,28 @@ hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 
+Домашнее задание 18
+
+Запущены три сервиса для обработки логов - fluentd, elasticsearch, kibana. Для fluentd установлены плагины fluentd и grok и написан конфиг.
+Для работы elasticsearch на хостовой машине нужно было выполнить команду sysctl -w vm.max_map_count=262144.
+Логирование сервисов post и ui переведено на драйвер fluentd. Kibana настроена на отображение логов, собираемых fluentd.
+
+В конфиг fluentd добавлен фильтр по key_name log для парсинга сообщений с тегом log от сервиса post.
+Для парсинга логов сервиса ui добавлены фильтры формата grok.
+
+Запущен еще один сервис - zipkin. В docker-compose.yml для сервисов определена переменная ZIPKIN_ENABLED для включения трассировки.
+
+Дополнительное задание 1
+
+В fluentd добавлен еще один фильтр grok для разбора логов ui.
+
+Дополнительное задание 2
+
+Скачан "сломанный" код приложения. В Dockerfile всех сервисов добавлены переменные окружения, в docker_build.sh - тег logging. После этого сервисы запустились. 
+С помощью zipkin обнаружено что при отображении поста функция db_find_single_post выполняется 3.01 секунды. В коде функции найдена создающая проблему строка  time.sleep(3).
+
+
+
 Домашнее задание 17
 
 Из конфига docker-compose выделен отдбелный конфиг для сервисов мониторинга.

@@ -34,8 +34,14 @@ build_stackdriver:
 	export USER_NAME=${USER_NAME} ; \
         cd monitoring/stackdriver ; \
         bash build.sh
+build_fluentd:
+	export USER_NAME=${USER_NAME} ; \
+        cd logging/fluentd ; \
+        bash build.sh
 
-build: build_comment build_post build_ui build_prometheus build_alertmanager build_telegraf build_grafana build_stackdriver 
+build: build_comment build_post build_ui build_prometheus build_alertmanager build_telegraf build_grafana build_stackdriver build_fluentd
+
+build_src: build_post build_ui build_comment
 
 
 push_comment:
@@ -54,8 +60,10 @@ push_grafana:
 	docker push ${USER_NAME}/grafana
 push_stackdriver:
 	docker push ${USER_NAME}/stackdriver
+push_fluentd:
+	docker push ${USER_NAME}/fluentd
 
-push: push_comment push_post push_ui push_prometheus push_alertmanager push_telegraf push_grafana push_stackdriver 
+push: push_comment push_post push_ui push_prometheus push_alertmanager push_telegraf push_grafana push_stackdriver push_fluentd
 
 run:
 	cd docker ; \
@@ -65,6 +73,10 @@ monitor:
 	cd docker ; \
         docker-compose -f docker-compose-monitoring.yml up -d
 
+log:
+	cd docker ; \
+        docker-compose -f docker-compose-logging.yml up -d
 
-all: build push run monitor
+
+all: build push run monitor log
 
