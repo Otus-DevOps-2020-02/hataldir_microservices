@@ -3,6 +3,85 @@ hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 
+Домашнее задание 19
+
+Созданы манифесты типа Deployment для post, comment, ui и mongo.
+
+Kubernetes The Hard Way:
+
+Установлены утилиты cfssl и cfssljson.
+Установлен kubectl
+
+В GCP создана сеть kubernetes-the-hard-way, в ней подсеть 10.240.0.0/24
+Созданы правила фаерволла, разрешающие tcp,udp,icmp внутри сети, а также icmp и порты tcp 22 и 6443 снаружи.
+Создан статический IP адрес (34.78.220.238)
+
+Созданы три виртуалки для контроллеров controller-0,1,2 и три worker-ноды worker-0,1,2
+
+Сгенерирован ключ /root/.ssh/google_compute_engine
+Сгенерированы сертификаты ca.pem и ca-key.pem, admin.pem и admin-key.pem, worker-*.pem и worker-*-key.pem, kube-controller-manager.pem и kube-controller-manager-key.pem,
+kube-proxy.pem и kube-proxy-key.pem, kube-scheduler.pem и kube-scheduler-key.pem, kubernetes.pem и kubernetes-key.pem, service-account.pem и service-account-key.pem
+Скопированы сертификаты worker* на worker-ноды и сертификаты ca, kubernetes, service-account на контроллеры.
+В переменной окружения сохранен внешний адрес
+Создны конфиги для worker-нод, kube-proxy, kube-controller-manager, kube-scheduler, пользователя admin.
+Скопированы конфиги kubelet и kube-proxy на worker-ноды; admin, kube-controller-manager, kube-scheduler на контроллеры
+Создан ключ шифрования, конфиг с ним, скопирован на контроллеры
+
+На каждом контроллере:
+Скачаны и установлены etcd, etcdctl
+Скопированы сертификаты в /etc/etcd
+Сохранены в переменные ip и hostname
+Создан и запущен etcd.service 
+
+Скачаны и установлены kube-apiserver, kube-controller-manager, kube-scheduler, kubectl
+Созданы kube-apiserver.service, kube-controller-manager.service, kube-scheduler.service
+Конфиги перемещены в  /var/lib/kubernetes/, создан конфиг /etc/kubernetes/config/kube-scheduler.yaml
+
+Установлен nginx для обеспечения healthcheck
+
+На одном контроллере:
+Настроен RBAC
+
+С локальной машины:
+Создан балансировищк
+
+На каждой ноде:
+Установлены пакеты  conntrack ipset libipset3 socat
+Проверено отсутствие свопа
+Скачан и установлен kubernetes
+Выполнена настройка сети для работы подов
+Созданы конфиг и service для containerd
+Созданы конфиг и service для kubelet
+Созданы конфиг и service для kube-proxy
+
+С локальной машины:
+Настроен kubectl на доступ к кластеру
+
+Настроена маршрутизация к сетям нод в GCP
+
+Установлен аддон coredns, для теста его работы запущен контейнер busybox, в нем выполнен nslookup  
+
+Протестировано шифрование
+Протестирован deployment
+Протетсирован port forwarding
+Протестировано логирование
+Протестирован exec в контейнере
+Протестирован доступ к сервису снаружи
+
+Запущены поды mongo, post, comment и ui
+
+Все выполненные  команды сохранены в файле commands
+
+
+
+
+
+
+
+
+
+
+
 Домашнее задание 18
 
 Запущены три сервиса для обработки логов - fluentd, elasticsearch, kibana. Для fluentd установлены плагины fluentd и grok и написан конфиг.
