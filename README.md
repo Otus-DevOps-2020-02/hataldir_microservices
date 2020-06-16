@@ -3,6 +3,38 @@ hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 
+Домашнее задание 20.
+
+Установлены kubectl и minikube. Запущен кластер minkube последней версии с драйвером docker.
+Поскольку версия Kubernetes последняя, во всех Deployment нужно будет использовать apiVersion apps/v1  
+Изменен deployment для сервиса ui, применен.
+Проверен port-forwarding. В отличие от описания в ДЗ для его работы надо установить пакет socat и  выполнить команду  kubectl port-forward --address 0.0.0.0  deployment/ui   8080:9292  &
+Изменен deployment для сервиса comment, применен, проверен.
+Изменен deployment для сервиса comment, применен, проверен.
+
+Исправлены очередные ошибки в ДЗ, созданы service comment, post, mongodb. 
+Созданы comment-service-mongo и post-service-mongo, добавлены переменные окружения в deployments для сервисов comment и post.
+Создан ui-service с nodeport для доступа к сервису снаружи
+ 
+Запущен dashboard:
+minikube addons enable dashboard
+minikube dashboard &
+kubectl proxy --address='0.0.0.0' --disable-filter=true &
+Также он запускается в namespace kubernetes-dashboard, а не kube-system. 
+
+Создан кластер в GKE, на нем развернуто приложение. Адрес http://34.77.152.235:31479
+
+Аддон Dashboard в GKE более недоступен.
+
+
+Дополнительное задание.
+
+Создан кластер в GKE с помощью terraform.
+
+
+
+
+
 Домашнее задание 19
 
 Созданы манифесты типа Deployment для post, comment, ui и mongo.
