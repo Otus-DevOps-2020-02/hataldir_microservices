@@ -20,12 +20,19 @@ hataldir microservices repository
 minikube addons enable dashboard
 minikube dashboard &
 kubectl proxy --address='0.0.0.0' --disable-filter=true &
-Также он запускаестя в namespace kubernetes-dashboard, а не kube-system. 
-
+Также он запускается в namespace kubernetes-dashboard, а не kube-system. 
 
 Создан кластер в GKE, на нем развернуто приложение. Адрес http://34.77.152.235:31479
 
 Аддон Dashboard в GKE более недоступен.
+
+
+Дополнительное задание.
+
+Создан кластер в GKE с помощью terraform.
+
+
+
 
 
 Домашнее задание 19
