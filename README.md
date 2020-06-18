@@ -3,6 +3,29 @@ hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 
+
+Домашнее задание 21.
+
+
+Для сервиса ui NodePort сменен на LoadBalancer, проверена его работа.
+Для сервиса ui создан Ingress.
+Создан сертификат, добавлен в кластер. Ingress переделан на использование только https.
+
+Включен аддон NetworkPolicy.
+Настроен доступ к сервису mongodb только с подов comment и post.
+
+Создан PersistentVolume reddit-mongo-disk, добавлен к mongodb вместо emptydisk.
+Создан PersistentVolumeClaim.
+Создан storage class Fast и динамический PVC, подключен к mongodb.
+
+
+Дополнительное задание:
+
+Добавление сертификата в кластер описано в yml.
+
+
+
+
 Домашнее задание 20.
 
 Установлены kubectl и minikube. Запущен кластер minkube последней версии с драйвером docker.
