@@ -3,6 +3,20 @@ hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
 
+Домашнее задание 22
+
+Установлен helm. написаны charts для компонентов ui, comment, post. Mongodb последней версии использовать не удалось, сервис post не авторизуется на нем. Пришлось создавать chart для этого сервиса и использовать образ mongo:3.2.
+
+В кластер добавлен еще один узел. Скачан gitlab. Для использования Gitlab указанной версии пришлось менять строку apiVersion и добавлять блок selector во всех deployment.
+
+В gitlab созданы проекты ui, comment, post - собирающиеся из исходников контейнеры; reddit-deploy - из чартов helm. Написаны пайплайны, для первых трех - со стадиями build, test, review, cleanup. Для четвертого - test 
+и окружения staging, production.
+Пайплайны ui и reddit-deploy переделаны - избаваились от функций и привели к стандартному виду gitlab; пайплайн comment - использован tiller-plugin, пайплайн post - использован helm3. 
+
+Дополнительное задание.
+
+В проекте reddit-deploy создан триггер, в остальных проектах добавлены стадии, вызывающие его и переменные для token и id.
+
 
 Домашнее задание 21.
 
