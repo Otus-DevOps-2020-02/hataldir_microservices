@@ -2,6 +2,14 @@
 hataldir microservices repository
 [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/hataldir_microservices)
 
+Домашнее задание 23
+
+Установлен Prometheus, настроены правила сбора метрик с сервисов приложения.
+Установлена grafana. Через helm install --set установить не удалось, пришлось скачивать chart и править values.yaml.
+Добавлены два созданных ранее дашборда, в них добавлена переменная namespace.
+
+Установлены elasticsearch и fluentd с помощью манифестов (версия 6.8.10)  и kibana с помощью скачанного helm chart (версия 6.7.0).
+
 
 Домашнее задание 22
 
